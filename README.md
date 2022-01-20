@@ -1,2 +1,2 @@
-# SergeyShhTask
+# SQLTask
 Tasks from hh school
