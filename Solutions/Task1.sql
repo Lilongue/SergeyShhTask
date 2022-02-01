@@ -8,14 +8,14 @@
 CREATE TABLE specialization
 (
     specialization_id serial primary key ,
-    title text not null ,
+    title varchar not null ,
     description text
 );
 
 CREATE TABLE employers
 (
     employer_id serial primary key ,
-    title text not null ,
+    title varchar not null ,
     description text ,
     area_id int not null
 );
@@ -23,8 +23,8 @@ CREATE TABLE employers
 CREATE TABLE responses
 (
     response_id serial primary key ,
-    vacancy_id int not null ,
-    cv_id int ,
+    vacancy_id int not null references vacancies(vacancy_id),
+    cv_id int references cv(cv_id),
     date date not null ,
     state int not null ,
     description text
@@ -33,8 +33,8 @@ CREATE TABLE responses
 CREATE TABLE vacancies
 (
     vacancy_id serial primary key ,
-    title text not null ,
-    employer_id int not null ,
+    title varchar not null ,
+    employer_id int not null references employers(employer_id),
     area_id int not null ,
     specialization_id int ,
     compensation_from int ,
@@ -47,12 +47,12 @@ CREATE TABLE vacancies
 CREATE TABLE cv
 (
     cv_id serial primary key ,
-    name text not null ,
-    second_name text not null ,
-    last_name text not null ,
+    name varchar not null ,
+    second_name varchar not null ,
+    last_name varchar not null ,
     specialization_id int ,
     age int not null ,
-    phone text ,
+    phone varchar ,
     date date not null ,
     state int not null ,
     description text
