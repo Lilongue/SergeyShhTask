@@ -22,12 +22,12 @@ CREATE TABLE employers
 
 CREATE TABLE responses
 (
-    response_id serial primary key ,
-    vacancy_id int not null references vacancies(vacancy_id),
+    vacancy_id int  references vacancies(vacancy_id),
     cv_id int references cv(cv_id),
     date date not null ,
     state int not null ,
     description text
+    PRIMARY KEY (vacancy_id, cv_id)
 );
 
 CREATE TABLE vacancies
